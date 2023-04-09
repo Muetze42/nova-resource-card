@@ -37,7 +37,7 @@ composer require norman-huth/nova-resource-card
 
 This usage examples use the Laravel Nova User resource class as example.
 
-## Add Nova Resource Card A Dashboard
+## Add Nova Resource Card To A Dashboard
 
 ```php
 use NormanHuth\NovaResourceCard\NovaResourceCard;
