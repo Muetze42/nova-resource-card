@@ -1,0 +1,32 @@
+<template>
+    <Card
+        class="dashboard-resource"
+        :class="resourceName + '-dashboard-resource'"
+    >
+        <ResourceIndex
+            :resourceName="resourceName"
+            :shouldOverrideMeta="true"
+            :shouldEnableShortcut="true"
+        />
+    </Card>
+</template>
+
+<script>
+import ResourceIndex from '@/views/Index'
+import { mapProps } from '@/mixins'
+
+export default {
+    name: 'Index',
+    components: [
+        ResourceIndex,
+    ],
+    props: [
+        ...mapProps(['resourceName']),
+        'card',
+    ],
+
+    mounted() {
+        //
+    },
+}
+</script>
