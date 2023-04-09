@@ -112,7 +112,7 @@ Use the `setFooterLinkExternalUrl` method.
 
 ### Set Detail Link Resource
 
-By default, this package generate the detail link by [Resource::$model], so that you can use several resources for one model without any effort.
+By default, this package generate the detail link by `Resource::$model`, so that you can use several resources for one model without any effort.
 
 Use the `setDetailLinkResource` method.
 
