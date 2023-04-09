@@ -128,12 +128,12 @@ class User extends Resource
 
 ### Advanced Usage
 
-If you want the corresponding resource to be different from the one in the index, you can create an extra Nova resource.
+Create your own Nova resource to customize it even more.
 
 You should set `$globallySearchable` to false so that this resource is not included in the global search.  
 (See: [Disabling Global Search For A Resource](https://nova.laravel.com/docs/4.0/search/global-search.html#disabling-global-search-for-a-resource))
 
-Example Resource:
+Examples Resource from [example-app-nvpRt7](https://github.com/Muetze42/example-app-nvpRt7)
 
 ```php
 class CardUser extends Resource
