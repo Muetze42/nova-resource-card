@@ -15,7 +15,8 @@ Limitations:
 
 Examples from [example-app-nvpRt7](https://github.com/Muetze42/example-app-nvpRt7)
 
-This package will certainly be extended in the course of time. For suggestions and wishes
+This package will certainly be extended in the course of time. Watch this package for Updates.  
+For suggestions and wishes
 please [create an issue](https://github.com/Muetze42/norman-huth-nova-resource-card/issues).
 
 <!-- 
