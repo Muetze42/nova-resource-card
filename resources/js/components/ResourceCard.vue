@@ -25,12 +25,21 @@
                     />
                     <ResourceTable
                         :authorized-to-relate="false"
-                        :resource-name="modelResourceName"
+                        :resource-name="detailResourceName"
                         :resources="resources"
                         :singular-name="singularName"
                         :sortable="false"
-                        class="rounded-t-lg rounded-b-lg"
+                        class="rounded-t-lg"
+                        :class="footerLink.label ? 'border-b border-gray-100 dark:border-gray-700' : 'rounded-b-lg'"
                     />
+                    <Component
+                        :is="footerLink.externalUrl ? 'a' : 'Link'"
+                        :target="footerLink.externalUrl ? '_blank' : null"
+                        v-if="footerLink.label"
+                        :href="footerLink.externalUrl ? footerLink.externalUrl :footerLink.url"
+                        class="px-2 py-2 whitespace-nowrap dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900 block text-center rounded-b-lg">
+                        {{ footerLink.label }}
+                    </Component>
                 </template>
             </LoadingView>
         </Card>
@@ -57,8 +66,9 @@ export default {
     name: "ResourceCard",
     props: [
         'resourceName',
-        'modelResourceName',
+        'detailResourceName',
         'resourceClasses',
+        'footerLink',
     ],
     mixins: [
         IndexConcerns,
@@ -85,6 +95,11 @@ export default {
     methods: {
         getAuthorizationToRelate() {
             return false
+        },
+        indexURL() {
+            return this.url(
+                `/resources/${this.resourceName}`,
+            )
         },
         getActions() {
             return {}

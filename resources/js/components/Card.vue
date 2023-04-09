@@ -7,7 +7,8 @@
             :resource-name="card.resourceName"
             :singular-name="card.singularName"
             :resource-classes="card.resourceClasses"
-            :model-resource-name="card.modelResourceName"
+            :detail-resource-name="card.detailResourceName"
+            :footer-link="card.footerLink"
         />
     </div>
 </template>

@@ -19,11 +19,15 @@ class NovaResourceCard extends Card
     protected Resource $resource;
 
     /**
-     * Build resource name by Nova Resource Model.
+     * The Footer Link.
      *
-     * @var bool
+     * @var array
      */
-    protected bool $useModelResourceName = true;
+    protected array $footerLink = [
+        'label'       => null,
+        'url'         => null,
+        'externalUrl' => null,
+    ];
 
     /**
      * The classes for the Card component.
@@ -55,12 +59,13 @@ class NovaResourceCard extends Card
     {
         $this->resource = app($resource);
         $this->height = static::DYNAMIC_HEIGHT;
+        $detailResourceName = Str::plural(Str::kebab(class_basename($this->resource::$model)));
         $this->withMeta([
             'resourceName'      => $this->resource::uriKey(),
-            'modelResourceName' => $this->useModelResourceName ?
-                Str::plural(Str::kebab(class_basename($this->resource::$model))) :$this->resource::uriKey(),
+            'detailResourceName' => $detailResourceName,
             'singularName'      => $this->resource::singularLabel(),
         ]);
+        $this->footerLink['url'] = route('nova.pages.index', $detailResourceName);
         parent::__construct();
     }
 
@@ -199,6 +204,64 @@ class NovaResourceCard extends Card
     }
 
     /**
+     * Set Footer Link Label.
+     *
+     * @param string $label
+     * @return $this
+     */
+    public function setFooterLinkLabel(string $label): static
+    {
+        $this->footerLink['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Set Footer Link Resource url.
+     *
+     * @param string|Resource $resource
+     * @return $this
+     */
+    public function setFooterLinkResource(string|Resource $resource): static
+    {
+        $resource = Str::plural(Str::kebab(class_basename($resource::$model)));
+
+        $this->footerLink['url'] = route('nova.pages.index', $resource);
+        $this->footerLink['externalUrl'] = null;
+
+        return $this;
+    }
+
+    /**
+     * Set Footer Link external url.
+     *
+     * @param string $url
+     * @return $this
+     */
+    public function setFooterLinkExternalUrl(string $url): static
+    {
+        $this->footerLink['url'] = null;
+        $this->footerLink['externalUrl'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Set Detail Link Resource.
+     *
+     * @param string|Resource $resource
+     * @return $this
+     */
+    public function setDetailLinkResource(string|Resource $resource): static
+    {
+        $this->withMeta([
+            'detailResourceName' => Str::plural(Str::kebab(class_basename($resource::$model))),
+        ]);
+
+        return $this;
+    }
+
+    /**
      * Prepare the element for JSON serialization.
      *
      * @return array<string, mixed>
@@ -206,8 +269,9 @@ class NovaResourceCard extends Card
     public function jsonSerialize(): array
     {
         $this->withMeta([
-            'cardClasses' => $this->cardClasses,
+            'cardClasses'     => $this->cardClasses,
             'resourceClasses' => $this->resourceClasses,
+            'footerLink'      => $this->footerLink,
         ]);
         return parent::jsonSerialize();
     }
