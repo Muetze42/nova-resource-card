@@ -8,4 +8,5 @@ mix
     .vue({version: 3})
     .css('resources/css/card.css', 'css')
     .nova('norman-huth/nova-resource-card')
+    .version()
     .disableNotifications()

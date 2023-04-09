@@ -163,6 +163,13 @@ class CardUser extends Resource
     }
 
     /**
+     * The pagination per-page options configured for this resource.
+     *
+     * @return array
+     */
+    public static $perPageOptions = [5];
+
+    /**
      * Build an "index" query for the given resource.
      *
      * @param NovaRequest $request
