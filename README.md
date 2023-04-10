@@ -74,7 +74,7 @@ class User extends Resource
     public function cards(NovaRequest $request): array
     {
         return [
-            new NovaResourceCard(\App\Nova\Resources\CardUser::class),
+            new NovaResourceCard(\App\Nova\Resources\User::class),
         ];
     }
 }
