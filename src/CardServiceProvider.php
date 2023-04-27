@@ -22,7 +22,7 @@ class CardServiceProvider extends ServiceProvider
 
         Nova::serving(function (ServingNova $event) {
             Nova::script('nova-resource-card', __DIR__.'/../dist/js/card.js');
-            Nova::style('nova-resource-card', __DIR__.'/../dist/css/card.css');
+            //Nova::style('nova-resource-card', __DIR__.'/../dist/css/card.css');
         });
     }
 
