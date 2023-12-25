@@ -1,25 +1,25 @@
 <template>
-    <div
-        class="dashboard-resource"
-        :class="[card.resourceName + '-dashboard-resource', card.cardClasses]"
-    >
-        <ResourceCard
-            :resource-name="card.resourceName"
-            :singular-name="card.singularName"
-            :resource-classes="card.resourceClasses"
-            :detail-resource-name="card.detailResourceName"
-            :footer-link="card.footerLink"
-        />
-    </div>
+  <div
+    class='dashboard-resource'
+    :class="[card.resourceName + '-dashboard-resource', card.cardClasses]"
+  >
+    <ResourceCard
+      :resource-name='card.resourceName'
+      :singular-name='card.singularName'
+      :resource-classes='card.resourceClasses'
+      :detail-resource-name='card.detailResourceName'
+      :footer-link='card.footerLink'
+    />
+  </div>
 </template>
 
 <script>
-import ResourceCard from "./ResourceCard";
+import ResourceCard from './ResourceCard'
 
 export default {
-    props: ['card'],
-    components: {
-        ResourceCard,
-    }
+  props: ['card'],
+  components: {
+    ResourceCard
+  }
 }
 </script>
