@@ -27,10 +27,14 @@
             :authorized-to-relate="false"
             :resource-name="detailResourceName"
             :resources="resources"
+            :actions-are-available="false"
+            :should-show-checkboxes="false"
             :singular-name="singularName"
+            :via-resource="null"
             :sortable="false"
             class="rounded-t-lg"
             :class="footerLink.label ? 'border-b border-gray-100 dark:border-gray-700' : 'rounded-b-lg'"
+            ref="resourceTable"
           />
           <Component
             :is="footerLink.externalUrl ? 'a' : 'Link'"
@@ -91,6 +95,7 @@ export default {
   },
   mounted() {
     this.getResources()
+    console.log('props resources', this.$page.props.novaConfig.resources)
   },
   methods: {
     getAuthorizationToRelate() {
