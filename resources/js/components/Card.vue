@@ -1,6 +1,6 @@
 <template>
   <div
-    class='dashboard-resource'
+    class="dashboard-resource overflow-hidden overflow-x-auto"
     :class="[card.resourceName + '-dashboard-resource', card.cardClasses]"
   >
     <ResourceCard

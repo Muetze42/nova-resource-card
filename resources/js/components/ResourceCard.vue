@@ -1,12 +1,12 @@
 <template>
   <LoadingView
-    :loading='initialLoading'
+    :loading="initialLoading"
   >
     <Heading
-      :level='2'
-      :class='resourceClasses.Heading'
-      class='mb-3 flex items-center'>
-      <span v-html='headingTitle' />
+      :level="2"
+      :class="resourceClasses.Heading"
+      class="mb-3 flex items-center">
+      <span v-html="headingTitle"/>
     </Heading>
     <Card :class="resourceClasses.Card">
       <LoadingView :loading="loading">
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { CancelToken, isCancel } from 'axios'
+import {CancelToken, isCancel} from 'axios'
 import {
   // HasCards,
   // Paginatable,
@@ -56,11 +56,11 @@ import {
   // Collapsable,
   // LoadsResources,
   IndexConcerns,
-  InteractsWithResourceInformation,
+  InteractsWithResourceInformation
   // InteractsWithQueryString,
   // SupportsPolling,
 } from '@/mixins'
-import { minimum } from '@/util'
+import {minimum} from '@/util'
 
 export default {
   name: 'ResourceCard',
@@ -72,7 +72,7 @@ export default {
   ],
   mixins: [
     IndexConcerns,
-    InteractsWithResourceInformation,
+    InteractsWithResourceInformation
   ],
   data() {
     return {
@@ -86,7 +86,7 @@ export default {
       selectAllMatchingResources: false,
       selectedResources: [],
       per_page: 0,
-      headingTitle: '&nbsp;'
+      headingTitle: "&nbsp;"
     }
   },
   mounted() {
@@ -109,10 +109,10 @@ export default {
           params: {},
           cancelToken: new CancelToken(canceller => {
             this.canceller = canceller
-          }),
+          })
         }),
         300
-      ).then(({ data }) => {
+      ).then(({data}) => {
         this.resource = data
         this.headingTitle = data.label
         this.resources = data.resources
